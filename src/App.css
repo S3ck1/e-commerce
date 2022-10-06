@@ -19,8 +19,16 @@ li {
     padding: 0;
 }
 
-.search-product {
-    width: 30px;
+.categories-nav-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+.search-container {
+    display: flex;
+    margin-top: 10px;
 }
 
 .products-list {
@@ -50,7 +58,7 @@ li {
 }
 
 .product-detail-imgs Button {
-    margin: 0 70px 0 70px;
+    margin: 0 150px 0 150px;
 }
 
 .related-products-title {
@@ -58,7 +66,7 @@ li {
 }
 
 .related-products-list {
-    margin: 0 auto;
+    margin: 50px auto 50px auto;
     display: flex;
     justify-content: center;
 }

@@ -12,7 +12,6 @@ import { getProductsThunk } from "./store/slices/products.slice";
 import { useEffect } from "react";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Cart from "./components/Cart";
-import Checkout from "./pages/Checkout";
 
 function App() {
   const isLoading = useSelector((state) => state.isLoading);
@@ -28,6 +27,7 @@ function App() {
     return product?.productImgs?.[0];
   };
 
+
   return (
       <HashRouter>
         <MyNavBar />
@@ -41,9 +41,6 @@ function App() {
               path="/purchases"
               element={<Purchases getProductImg={getProductImg} />}
             />
-          </Route>
-          <Route path="/checkout" element={<Checkout getProductImg={getProductImg}/>}>
-
           </Route>
         </Routes>
         <Cart getProductImg={getProductImg}> </Cart>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleClose } from "../store/slices/show.slice";
 import { getCartProductsThunk, removeProductThunk } from "../store/slices/cart.slice";
 import { Link, useNavigate } from "react-router-dom";
+import CheckoutModal from "./CheckoutModal";
 
 const Cart = ({ getProductImg }) => {
   const show = useSelector((state) => state.show);
@@ -41,7 +42,7 @@ const Cart = ({ getProductImg }) => {
         ))}
       </ListGroup>
       <Offcanvas.Body></Offcanvas.Body>
-      <Button onClick={() => navigate("/checkout")}>Checkout</Button>
+      <CheckoutModal getProductImg={getProductImg}/>
     </Offcanvas>
   );
 };

@@ -13,42 +13,56 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("https://ecommerce-api-react.herokuapp.com/api/v1/products/categories")
+      .get(
+        "https://ecommerce-api-react.herokuapp.com/api/v1/products/categories"
+      )
       .then((res) => setCategories(res.data.data.categories));
   }, []);
 
   useEffect(() => {
     setProductsFiltered(productsList);
   }, [productsList]);
-  
 
   const filterCategory = (categoryID) => {
-    const filtered = productsList.filter((product) => product.category.id == categoryID)
-    console.log(filtered)
+    const filtered = productsList.filter(
+      (product) => product.category.id == categoryID
+    );
+    console.log(filtered);
     setProductsFiltered(filtered);
-  }
+  };
 
   const searchProducts = () => {
-    const filtered = productsList.filter((product) => 
-    product.title.toLowerCase().includes(searchValue.toLowerCase()));
+    const filtered = productsList.filter((product) =>
+      product.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
     setProductsFiltered(filtered);
-  }
+  };
 
   return (
     <div>
-     {categories.map((category) => (
-        <Button key={category.id} onClick={() => filterCategory(category.id)}>{category.name}</Button>
-     ))}
-     <InputGroup className="mb-3 search-product">
-        <Form.Control
-          placeholder="Search Products"
-          onChange={(e) => setSearchValue(e.target.value)}
-          value = {searchValue}
-        />
-        <Button variant="outline-secondary" onClick={searchProducts}>
-          Search
-        </Button>
-      </InputGroup>
+      <h1>Categories</h1>
+      <div className="categories-nav-container">
+        {categories.map((category) => (
+          <Button key={category.id} onClick={() => filterCategory(category.id)}>
+            {category.name}
+          </Button>
+        ))}
+      </div>
+      <div className="search-container">
+        <InputGroup
+          className="mb-3 search-product"
+          style={{ maxWidth: "600px", margin: "20px auto" }}
+        >
+          <Form.Control
+            placeholder="Search Products"
+            onChange={(e) => setSearchValue(e.target.value)}
+            value={searchValue}
+          />
+          <Button variant="outline-secondary" onClick={searchProducts}>
+            Search
+          </Button>
+        </InputGroup>
+      </div>
       <ul className="products-list">
         {productsFiltered.map((product) => (
           <li
