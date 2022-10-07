@@ -30,10 +30,36 @@ li {
   margin-top: 10px;
 }
 
+.products-list-container {
+  margin: auto;
+}
+
 .products-list {
   display: grid;
   grid-template-columns: auto auto auto;
-  margin: 0 auto;
+  margin-right: 150px;
+  margin-left: 150px;
+}
+
+.products-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+}
+
+.products-list li:hover {
+  filter: brightness(85%);
+}
+
+.products-list b {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #007ace;
+}
+
+.products-list p {
+  color: black;
 }
 
 .product {
@@ -132,4 +158,3 @@ li {
   margin: 0 auto;
   width: 250px;
 }
-
