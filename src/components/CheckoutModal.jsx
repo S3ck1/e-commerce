@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutModal = ({ getProductImg }) => {
+	const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+		setShow(true)
+		navigate("/purchase")
+	};
 
   const cartProducts = useSelector((state) => state.cart);
 
@@ -18,11 +23,11 @@ const CheckoutModal = ({ getProductImg }) => {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>CHECKOUT</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="checkout-container">
-              <h1>Checkout</h1>
+              <h3>Products:</h3>
               <ul className="checkout-product-list">
                 {cartProducts.map((product) => (
                   <li key={product.id}>
@@ -41,7 +46,7 @@ const CheckoutModal = ({ getProductImg }) => {
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
-              Save Changes
+								PURCHASE
             </Button>
           </Modal.Footer>
         </Modal>

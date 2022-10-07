@@ -10,7 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   const submit = (data) => {
-    console.log(data);
     axios
       .post(
         "https://ecommerce-api-react.herokuapp.com/api/v1/users/login",

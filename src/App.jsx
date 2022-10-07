@@ -12,6 +12,7 @@ import { getProductsThunk } from "./store/slices/products.slice";
 import { useEffect } from "react";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Cart from "./components/Cart";
+import Purchase from "./pages/Purchase";
 
 function App() {
   const isLoading = useSelector((state) => state.isLoading);
@@ -40,6 +41,10 @@ function App() {
             <Route
               path="/purchases"
               element={<Purchases getProductImg={getProductImg} />}
+            />
+            <Route
+              path="/purchase"
+              element={<Purchase getProductImg={getProductImg} />}
             />
           </Route>
         </Routes>
