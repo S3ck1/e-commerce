@@ -19,7 +19,7 @@ export const { setCartProducts } = cartSlice.actions;
 export const getCartProductsThunk = () => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
-    .get("https://ecommerce-api-react.herokuapp.com/api/v1/cart", getConfig())
+    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/cart`, getConfig())
     .then((res) => dispatch(setCartProducts(res.data.data.cart.products)))
     .catch((error) => console.log(error))
     .finally(() => dispatch(setIsLoading(false)));
@@ -29,7 +29,7 @@ export const addToCartThunk = (product) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
     .post(
-      "https://ecommerce-api-react.herokuapp.com/api/v1/cart",
+      `"${process.env.NEXT_PUBLIC_BASE_URL}/cart`,
       product,
       getConfig()
     )
@@ -42,7 +42,7 @@ export const removeProductThunk = (productID) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
     .delete(
-      `https://ecommerce-api-react.herokuapp.com/api/v1/cart/${productID}`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/cart/${productID}`,
       getConfig()
     )
     .then(() => dispatch(getCartProductsThunk()))
@@ -54,7 +54,7 @@ export const purchaseCartThunk = (body) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
     .post(
-      "https://ecommerce-api-react.herokuapp.com/api/v1/purchases",
+      `${process.env.NEXT_PUBLIC_BASE_URL}/purchases`,
       body,
       getConfig()
     )

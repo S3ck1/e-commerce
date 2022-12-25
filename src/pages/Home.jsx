@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        "https://ecommerce-api-react.herokuapp.com/api/v1/products/categories"
+        `${process.env.BASE_URL}/products/categories`
       )
       .then((res) => setCategories(res.data.data.categories));
   }, []);

@@ -12,7 +12,7 @@ const Login = () => {
   const submit = (data) => {
     axios
       .post(
-        "https://ecommerce-api-react.herokuapp.com/api/v1/users/login",
+        `${process.env.BASE_URL}/users/login`,
         data
       )
       .then((res) => {
