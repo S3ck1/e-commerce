@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import { addToCartThunk } from "../store/slices/cart.slice";
+import { motion } from "framer-motion";
 
 const ProductsDetail = () => {
   const dispatch = useDispatch();
@@ -31,22 +32,22 @@ const ProductsDetail = () => {
 
   //0 = left   1 = right
   const switchImg = (direction) => {
-    if(direction === 0) {
+    if (direction === 0) {
       if (imgIndex === 0) {
-        setImgIndex(2)
+        setImgIndex(2);
       } else {
-        setImgIndex(imgIndex-1)
+        setImgIndex(imgIndex - 1);
       }
     } else if (direction === 1) {
       if (imgIndex === 2) {
-        setImgIndex(0)
+        setImgIndex(0);
       } else {
-        setImgIndex(imgIndex+1)
+        setImgIndex(imgIndex + 1);
       }
     } else {
-      console.log("Wrong direction")
+      console.log("Wrong direction");
     }
-  }
+  };
 
   return (
     <div>
@@ -57,7 +58,12 @@ const ProductsDetail = () => {
       <div className="product-detail">
         <div className="product-detail-imgs">
           <Button onClick={() => switchImg(0)}>{"<"}</Button>
-          <img src={productDetail?.productImgs?.[imgIndex]} />
+          <motion.img
+            initial={{ x: -200, opacity: 0, scale: 0.5 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5 }}
+            src={productDetail?.productImgs?.[imgIndex]}
+          />
           <Button onClick={() => switchImg(1)}>{">"}</Button>
         </div>
         <h5>Price ${productDetail?.price}</h5>
