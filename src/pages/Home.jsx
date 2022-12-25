@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        `${process.env.BASE_URL}/products/categories`
+        `https://e-commerce-api.academlo.tech/api/v1/products/categories`
       )
       .then((res) => setCategories(res.data.data.categories));
   }, []);

@@ -19,7 +19,7 @@ export const { setCartProducts } = cartSlice.actions;
 export const getCartProductsThunk = () => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
-    .get(`${process.env.NEXT_PUBLIC_BASE_URL}/cart`, getConfig())
+    .get(`https://e-commerce-api.academlo.tech/api/v1/cart`, getConfig())
     .then((res) => dispatch(setCartProducts(res.data.data.cart.products)))
     .catch((error) => console.log(error))
     .finally(() => dispatch(setIsLoading(false)));
@@ -29,7 +29,7 @@ export const addToCartThunk = (product) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
     .post(
-      `"${process.env.NEXT_PUBLIC_BASE_URL}/cart`,
+      `https://e-commerce-api.academlo.tech/api/v1/cart`,
       product,
       getConfig()
     )
@@ -42,7 +42,7 @@ export const removeProductThunk = (productID) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
     .delete(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/cart/${productID}`,
+      `https://e-commerce-api.academlo.tech/api/v1/cart/${productID}`,
       getConfig()
     )
     .then(() => dispatch(getCartProductsThunk()))
@@ -54,7 +54,7 @@ export const purchaseCartThunk = (body) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
     .post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/purchases`,
+      `https://e-commerce-api.academlo.tech/api/v1/purchases`,
       body,
       getConfig()
     )

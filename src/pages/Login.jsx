@@ -12,7 +12,7 @@ const Login = () => {
   const submit = (data) => {
     axios
       .post(
-        `${process.env.BASE_URL}/users/login`,
+        `https://e-commerce-api.academlo.tech/api/v1/users/login`,
         data
       )
       .then((res) => {
