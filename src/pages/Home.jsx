@@ -42,11 +42,11 @@ const Home = () => {
     <div>
       <h1>Categories</h1>
       <div className="categories-nav-container">
-        <Button onClick={() => setProductsFiltered(productsList)}>
+        <Button className="btn btn-light" onClick={() => setProductsFiltered(productsList)}>
           All
         </Button>
         {categories.map((category) => (
-          <Button key={category.id} onClick={() => filterCategory(category.id)}>
+          <Button key={category.id} className="btn btn-light" onClick={() => filterCategory(category.id)}>
             {category.name}
           </Button>
         ))}

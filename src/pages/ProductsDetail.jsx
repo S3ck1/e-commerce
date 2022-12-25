@@ -52,7 +52,7 @@ const ProductsDetail = () => {
     <div>
       <h1>Products Detail</h1>
       <p>
-        Mostrando información de <b>{productDetail?.title}</b>
+        Showing info of <b>{productDetail?.title}</b>
       </p>
       <div className="product-detail">
         <div className="product-detail-imgs">
