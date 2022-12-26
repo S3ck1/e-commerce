@@ -17,7 +17,7 @@ const CheckoutModal = ({ getProductImg }) => {
   return (
     <>
       <>
-        <Button variant="primary" onClick={handleShow}>
+        <Button variant="secondary" className="btn btn-dark" onClick={handleShow}>
           Checkout
         </Button>
 
@@ -42,10 +42,10 @@ const CheckoutModal = ({ getProductImg }) => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" className="btn btn-secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" className="btn btn-success" onClick={handleClose}>
               Purchase
             </Button>
           </Modal.Footer>

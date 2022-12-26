@@ -59,7 +59,7 @@ const ProductsDetail = () => {
         <div className="product-detail-imgs">
           <Button onClick={() => switchImg(0)}>{"<"}</Button>
           <motion.img
-            initial={{ y: -100, opacity: 0, scale: 0.8 }}
+            initial={{ y: -25, opacity: 0, scale: 0.8 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             transition={{ duration: 1.5 }}
             src={productDetail?.productImgs?.[imgIndex]}
