@@ -21,7 +21,7 @@ const MyNavBar = () => {
         bg="dark" variant="dark">
         <Container>
           <Navbar.Brand to="/" as={Link}>
-            E-Commerce
+            NextKey Store
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/login">
