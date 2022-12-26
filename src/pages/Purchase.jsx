@@ -8,10 +8,16 @@ import { purchaseCartThunk } from "../store/slices/cart.slice";
 const Purchase = ({ getProductImg }) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const submit = (data) => {
     dispatch(purchaseCartThunk(data));
   };
+
+  const handlePurchase = () => {
+    alert("Purchased!")
+    navigate("/")
+  }
 
   return (
     <div>
@@ -60,7 +66,7 @@ const Purchase = ({ getProductImg }) => {
             placeholder="Some References"
           />
         </Form.Group>
-        <Button variant="primary" className="btn btn-dark" type="submit" style={{marginTop: "50px"}}>
+        <Button variant="primary" onClick={handlePurchase}className="btn btn-dark" type="submit" style={{marginTop: "50px"}}>
           Submit
         </Button>
       </Form>
