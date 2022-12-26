@@ -18,28 +18,33 @@ const Purchases = ({ getProductImg }) => {
     <div>
       <h1>Purchases</h1>
       <ListGroup>
-          {purchases.map((purchase) => (
-            <ListGroup.Item key={purchase.id}>
-              <h3>Purchase ID: {purchase.id}</h3>
-              <h4>Products List</h4>
-              <ul className="purchase-products-list">
-                {purchase.cart.products.map((product) => (
-                  <li
-                    key={product.id}
-                    onClick={() => navigate(`/products/${product.id}`)}
-                  >
-                    <img
-                      src={getProductImg(product.id)}
-                      style={{ maxWidth: "200px", maxHeight: "100px" }}
-                      alt=""
-                    />
-                    <br />
-                    <b>{product.title}</b>
-                  </li>
-                ))}
-              </ul>
-            </ListGroup.Item>
-          ))}
+        {purchases.map((purchase) => (
+          <ListGroup.Item
+            key={purchase.id}
+            style={{
+              marginTop: "20px",
+            }}
+          >
+            <h3>Purchase ID: {purchase.id}</h3>
+            <h4>Products List</h4>
+            <ul className="purchase-products-list">
+              {purchase.cart.products.map((product) => (
+                <li
+                  key={product.id}
+                  onClick={() => navigate(`/products/${product.id}`)}
+                >
+                  <img
+                    src={getProductImg(product.id)}
+                    style={{ maxWidth: "200px", maxHeight: "100px" }}
+                    alt=""
+                  />
+                  <br />
+                  <b>{product.title}</b>
+                </li>
+              ))}
+            </ul>
+          </ListGroup.Item>
+        ))}
       </ListGroup>
     </div>
   );

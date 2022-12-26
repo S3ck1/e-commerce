@@ -119,17 +119,26 @@ li {
 }
 
 .purchase-products-list {
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: center;
-  grid-template-columns: auto auto;
+  text-align: center;
 }
 
 .purchase-products-list li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 250px;
   height: 150px;
   margin: 20px;
   cursor: pointer;
+}
+
+.purchase-products-list li img {
+  width: 100px;
+  height: 100px;
 }
 
 .add-to-cart-btn {
