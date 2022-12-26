@@ -80,10 +80,11 @@ li {
 
 .product-detail {
   transition: all 1s;
+  margin-top: 50px;
 }
 
 .product-detail img {
-  height: 450px;
+  height: 400px;
   width: 400px;
 }
 

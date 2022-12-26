@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button, InputGroup, Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,9 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://e-commerce-api.academlo.tech/api/v1/products/categories`
-      )
+      .get(`https://e-commerce-api.academlo.tech/api/v1/products/categories`)
       .then((res) => setCategories(res.data.data.categories));
   }, []);
 
@@ -42,11 +41,18 @@ const Home = () => {
     <div>
       <h1>Categories</h1>
       <div className="categories-nav-container">
-        <Button className="btn btn-light" onClick={() => setProductsFiltered(productsList)}>
+        <Button
+          className="btn btn-light"
+          onClick={() => setProductsFiltered(productsList)}
+        >
           All
         </Button>
         {categories.map((category) => (
-          <Button key={category.id} className="btn btn-light" onClick={() => filterCategory(category.id)}>
+          <Button
+            key={category.id}
+            className="btn btn-light"
+            onClick={() => filterCategory(category.id)}
+          >
             {category.name}
           </Button>
         ))}
@@ -66,7 +72,12 @@ const Home = () => {
           </Button>
         </InputGroup>
       </div>
-      <div className="products-list-container">
+      <motion.div
+        initial={{opacity: 0, scale: 0.9 }}
+        animate={{opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5 }}
+        className="products-list-container"
+      >
         <ul className="products-list">
           {productsFiltered.map((product) => (
             <li
@@ -80,7 +91,7 @@ const Home = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 };
