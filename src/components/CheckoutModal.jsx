@@ -2,15 +2,22 @@ import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { handleClose as closeCart} from "../store/slices/show.slice";
+import { useDispatch } from "react-redux";
 
 const CheckoutModal = ({ getProductImg }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
-    navigate("/purchase");
   };
+  const handlePurchase = () => {
+    setShow(false);
+    navigate("./purchase")
+    dispatch(closeCart());
+  }
 
   const cartProducts = useSelector((state) => state.cart);
 
@@ -45,7 +52,7 @@ const CheckoutModal = ({ getProductImg }) => {
             <Button variant="secondary" className="btn btn-secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" className="btn btn-success" onClick={handleClose}>
+            <Button variant="primary" className="btn btn-success" onClick={handlePurchase}>
               Purchase
             </Button>
           </Modal.Footer>

@@ -8,7 +8,6 @@ import { purchaseCartThunk } from "../store/slices/cart.slice";
 const Purchase = ({ getProductImg }) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const submit = (data) => {
     dispatch(purchaseCartThunk(data));

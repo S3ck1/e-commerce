@@ -13,16 +13,18 @@ const Register = () => {
   const submit = (data) => {
     data["phone"] = "1234567890";
     data["role"] = "admin";
-    console.log(data);
     axios
       .post(`https://e-commerce-api.academlo.tech/api/v1/users`, data)
       .catch((error) => {
-        if (error.response?.status === 404) {
-          alert(error.response?.message);
+          alert(error.response?.data.message);
+      })
+      .then((res) => 
+      {
+        if(res?.status === 201) {
+          alert("User successfully created!")
+          navigate("/login")
         }
       })
-      .then(() => navigate("/login"))
-      .then(() => alert("User successfully created!"));
   };
 
   return (
@@ -34,7 +36,7 @@ const Register = () => {
     >
       <h1>Register</h1>
       <Form onSubmit={handleSubmit(submit)}>
-        <Form.Group className="mb-3" controlId="formPlainText">
+        <Form.Group className="mb-3" controlId="formPlainTextName">
           <Form.Label>First Name</Form.Label>
           <Form.Control
             {...register("firstName")}
@@ -42,7 +44,7 @@ const Register = () => {
             placeholder="Enter first name"
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formPlainText">
+        <Form.Group className="mb-3" controlId="formPlainTextLastName">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
             {...register("lastName")}
