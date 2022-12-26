@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -24,7 +25,12 @@ const Login = () => {
   };
 
   return (
-    <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      style={{ maxWidth: "500px", margin: "0 auto" }}
+    >
       <h1>Login</h1>
       <Form onSubmit={handleSubmit(submit)}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -48,11 +54,10 @@ const Login = () => {
         </Button>
       </Form>
 
-      <div style={{marginTop: "25px"}}>
-        Don't have an account? {" "} 
-        <Link to={`/register/`}>Sign Up</Link>
+      <div style={{ marginTop: "25px" }}>
+        Don't have an account? <Link to={`/register/`}>Sign Up</Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

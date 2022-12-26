@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getProductsThunk } from "../store/slices/products.slice";
 import { handleShow } from "../store/slices/show.slice";
-import Cart from "./Cart";
 
 const MyNavBar = () => {
   const navigate = useNavigate();
@@ -17,8 +16,10 @@ const MyNavBar = () => {
 
   return (
     <>
-      <Navbar 
-        bg="dark" variant="dark">
+      <Navbar
+        bg="dark"
+        variant="dark"
+      >
         <Container>
           <Navbar.Brand to="/" as={Link}>
             NextKey Store

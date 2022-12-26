@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -12,7 +13,7 @@ const Register = () => {
   const submit = (data) => {
     data["phone"] = "1234567890";
     data["role"] = "admin";
-    console.log(data)
+    console.log(data);
     axios
       .post(`https://e-commerce-api.academlo.tech/api/v1/users`, data)
       .catch((error) => {
@@ -21,11 +22,16 @@ const Register = () => {
         }
       })
       .then(() => navigate("/login"))
-      .then(() => alert("User successfully created!"))
+      .then(() => alert("User successfully created!"));
   };
 
   return (
-    <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      style={{ maxWidth: "500px", margin: "0 auto" }}
+    >
       <h1>Register</h1>
       <Form onSubmit={handleSubmit(submit)}>
         <Form.Group className="mb-3" controlId="formPlainText">
@@ -66,9 +72,9 @@ const Register = () => {
         </Button>
       </Form>
       <div style={{ marginTop: "25px" }}>
-        Have an account? <Link to={`/products/`}>Sign In</Link>
+        Have an account? <Link to={`/login/`}>Sign In</Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
