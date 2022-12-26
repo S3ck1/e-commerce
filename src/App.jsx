@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Cart from "./components/Cart";
 import Purchase from "./pages/Purchase";
+import Register from "./pages/Register";
 
 function App() {
   const isLoading = useSelector((state) => state.isLoading);
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="register" element={<Register />} />
           <Route path="/products/:id" element={<ProductsDetail />} />
           <Route element={<ProtectedRoutes />}>
             <Route
