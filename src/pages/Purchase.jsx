@@ -38,7 +38,7 @@ const Purchase = ({ getProductImg }) => {
           />
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>zipCode</Form.Label>
+          <Form.Label>Zip code</Form.Label>
           <Form.Control
             {...register("zipCode")}
             type="number"
