@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutModal = ({ getProductImg }) => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
-		setShow(true)
-		navigate("/purchase")
-	};
+    setShow(true);
+    navigate("/purchase");
+  };
 
   const cartProducts = useSelector((state) => state.cart);
 
@@ -46,7 +46,7 @@ const CheckoutModal = ({ getProductImg }) => {
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
-								PURCHASE
+              Purchase
             </Button>
           </Modal.Footer>
         </Modal>

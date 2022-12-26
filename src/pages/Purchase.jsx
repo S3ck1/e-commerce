@@ -11,15 +11,17 @@ const Purchase = ({ getProductImg }) => {
   const navigate = useNavigate();
 
   const submit = (data) => {
-    console.log(data);
     dispatch(purchaseCartThunk(data));
   };
 
   return (
     <div>
       <h1>Purchase</h1>
-      <Form onSubmit={handleSubmit(submit)}>
-        <Form.Group className="mb-3">
+      <Form
+        onSubmit={handleSubmit(submit)}
+        style={{ maxWidth: "600px", display: "flex", flexDirection: "column", margin: "auto" }}
+      >
+        <Form.Group className="mb-3" style={{marginTop: "20px"}}>
           <Form.Label>Street Address</Form.Label>
           <Form.Control
             {...register("street")}
@@ -59,7 +61,7 @@ const Purchase = ({ getProductImg }) => {
             placeholder="Some References"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" className="btn btn-dark" type="submit" style={{marginTop: "50px"}}>
           Submit
         </Button>
       </Form>

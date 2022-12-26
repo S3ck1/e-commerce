@@ -18,13 +18,11 @@ const Login = () => {
       .then((res) => {
         localStorage.setItem("token", res.data.data.token) 
         navigate("/")
-        console.log(res.data.data)
       })
       .catch((error) => {
         if (error.response?.status === 404) {
           alert("Credenciales inválidas");
         }
-        console.log(error.response);
       });
   };
 

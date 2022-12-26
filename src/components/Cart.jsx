@@ -8,6 +8,7 @@ import {
 } from "../store/slices/cart.slice";
 import { Link, useNavigate } from "react-router-dom";
 import CheckoutModal from "./CheckoutModal";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const Cart = ({ getProductImg }) => {
   const show = useSelector((state) => state.show);
@@ -23,6 +24,7 @@ const Cart = ({ getProductImg }) => {
     dispatch(removeProductThunk(product.id));
   };
 
+
   return (
     <Offcanvas
       show={show}
@@ -34,12 +36,18 @@ const Cart = ({ getProductImg }) => {
       </Offcanvas.Header>
       <ListGroup>
         {cartProducts.map((product) => (
-          <ListGroup.Item className="cart-item" key={product.id}>
-            <Link to={`/products/${product.id}`}>{product.title}</Link>
-            <div className="cart-product-info"></div>
-            <Button size="sm" onClick={() => removeProduct(product)}>
-              Remove
-            </Button>
+          <ListGroup.Item key={product.id}>
+            <div className="cart-item">
+              <img src={getProductImg(product.id)} />
+              <div>
+                <Link to={`/products/${product.id}`}>{product.title}</Link>
+                <BsFillTrashFill
+                  style={{fontSize: "20px"}}
+                  className="trash-icon"
+                  onClick={() => removeProduct(product)}
+                />
+              </div>
+            </div>
           </ListGroup.Item>
         ))}
       </ListGroup>
