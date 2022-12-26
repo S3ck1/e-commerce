@@ -1,12 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import tokenExists from '../utils/tokenExists'
 
 const ProtectedRoutes = () => {
-
-    const tokenExists = () => {
-        const token = localStorage.getItem("token")
-        return token!=="";
-    }
-
     if(tokenExists()){
         return <Outlet />
     } else { 

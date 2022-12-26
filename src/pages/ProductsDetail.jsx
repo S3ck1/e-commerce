@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import { addToCartThunk } from "../store/slices/cart.slice";
+import tokenExists from '../utils/tokenExists'
 import { motion } from "framer-motion";
 
 const ProductsDetail = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const productsList = useSelector((state) => state.products);
@@ -18,16 +20,21 @@ const ProductsDetail = () => {
     (product) => product.category.id === productDetail.category.id
   );
 
+
   //products: id
   //cant
 
   const addProduct = () => {
-    alert("Adding product to cart");
-    const product = {
-      id: id,
-      quantity: productCount,
-    };
-    dispatch(addToCartThunk(product));
+    if (tokenExists()) {
+      alert("Adding product to cart");
+      const product = {
+        id: id,
+        quantity: productCount,
+      };
+      dispatch(addToCartThunk(product));
+    } else {
+      navigate('/login', {replace: true})
+    }
   };
 
   //0 = left   1 = right

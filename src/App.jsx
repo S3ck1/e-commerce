@@ -35,10 +35,10 @@ function App() {
         <MyNavBar />
         {isLoading && <LoadingScreen />}
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="/products/:id" element={<ProductsDetail />} />
+          <Route path="/" element={<Home />} />
           <Route element={<ProtectedRoutes />}>
             <Route
               path="/purchases"
